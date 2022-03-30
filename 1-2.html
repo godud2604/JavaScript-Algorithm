@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 서로 다른 A, B, C 세 개의 막대 길이가 주어지면 이 세 막대로 삼각형을 만들 수 있으면 YES, 없으면 No
+    // 삼각형 조건 : C가 가장 긴 변일 때, A + B > C
+
+    function triangleDiscirimination(...arr) {
+      const [a, b, c] = arr; // 구조 분해 할당
+      let 가장긴변;
+      let 세변의합 = a + b + c;
+      let 결과 = "YES";
+
+      // A, B, C 중 가장 긴 변 찾기
+      if (a > b) 가장긴변 = a
+      else 가장긴변 = b
+      if (c > 가장긴변) 가장긴변 = c
+
+      // 삼각형 조건 : 나머지 두 변의 길이의 합 > 가장 긴 변
+      const 나머지두변의합 = 세변의합 - 가장긴변;
+      if (나머지두변의합 <= 가장긴변) 결과 = 'NO'
+      
+      return 결과;
+    }
+
+    console.log(triangleDiscirimination(13, 33, 17))
+  </script>
+</body>
+</html>
