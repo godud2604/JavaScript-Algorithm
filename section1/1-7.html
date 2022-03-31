@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let date = 0;
+    let carNum = [12, 20, 54, 30, 87, 91, 30];
+
+    // 1.
+    function violationCar(date, carNum) {
+      let answer = 0;
+
+
+      carNum.forEach((num) => {
+        if (String(num)[1] == date) {
+          answer++;
+        }
+      });
+
+      return answer;
+    }
+    
+    console.log(violationCar(date, carNum));
+    
+    // 2.
+    function violationCar2(date, carNum) {
+      let answer = 0;
+
+      carNum.forEach((num) => {
+        if (num % 10 == date) {
+          answer++;
+        }
+      });
+
+      return answer;
+    }
+    
+    console.log(violationCar2(date, carNum));
+
+    // 3.
+    function solution(day, arr) {
+      let answer = 0;
+
+      for(let x of arr) {
+        if (x % 10 === day) answer++;
+      }
+
+      return answer;
+    }
+
+    console.log(solution(date, carNum));
+  </script>
+</body>
+</html>
