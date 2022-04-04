@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // 가운데 글자 가져오기
+  // 만약, 단어의 길이가 짝수라면 가운데 두 글자를 반환
+
+  // 1.
+  function solution(s) {
+    let answer;
+    const middleIndex = Math.floor(s.length / 2);
+    
+    if (s.length % 2 !== 0) {
+      answer = s.split('').splice(middleIndex, 1).join('');
+    } else {
+      answer = s.split('').splice(middleIndex - 1, 2).join('');
+    }
+
+    return answer;
+  }
+
+  // console.log(solution("qwer"))
+
+  function solution_1(s) {
+    let answer;
+    const middleIndex = Math.floor(s.length / 2);
+    
+    if (s.length % 2 !== 0) {
+      answer = s.substring(middleIndex, 3);
+    } else {
+      answer = s.substring(middleIndex - 1, 3);
+    }
+
+    return answer;
+  }
+
+  console.log(solution_1("abced"))
+
+
+  // 2.
+  function solution2(s) {
+    return s.substr(Math.ceil(s.length / 2) - 1, s.length % 2 === 0 ? 2 : 1);
+  }
+
+  // console.log(solution("qwer"))
+
+  </script>
+</body>
+</html>
