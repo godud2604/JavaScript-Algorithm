@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // sum 을 구한다
+    // i, j 를 뽑아서 더한다
+    // sum - (i + j) === 100 이면 i, j 가 가짜 난쟁이다.
+    // 가짜 난쟁이를 제외한 진짜 일곱 난쟁이만 출력한다.
+
+    function sum100(...arr) {
+      let answer = arr;
+      let sum = 0;
+
+      arr.forEach((num) => {
+        sum += num
+      })
+
+      for(let i = 0; i < arr.length; i++) {
+        for(let j = 1; j < arr.length; j++) {
+          if (i === j) continue;
+          if(sum - (arr[i] + arr[j]) === 100) {
+            console.log(arr[i], arr[j])
+            answer.slice(10, 1);
+            console.log(answer)
+          }
+        }
+      }
+
+      
+      return answer;
+    }
+
+    console.log(sum100(20, 7, 23, 19, 10, 15, 25, 8, 13));
+  </script>
+</body>
+</html>
