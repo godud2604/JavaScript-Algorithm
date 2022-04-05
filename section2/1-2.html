@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    앞에 서 있는 사람들보다 크면 보이고, 작거나 같으면 보이지 않는다.
+   -->
+  <script>
+    // 1.
+    function solution(arr) {
+      let max_num = arr[0];
+      let answer = 1;
+      
+      arr.forEach((v, i) => {
+        if (v > max_num) {
+          max_num = v
+          answer++;
+        }
+      })
+
+      return answer;
+    }
+
+    console.log(solution([130, 135, 148, 140, 145, 150, 150, 153]));
+
+    // 2.
+    function solution2(arr) {
+      let answer = 1, max = arr[0];
+      for(let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+          answer++;
+          max = arr[i];
+        }
+      }
+
+      return answer;
+    }
+
+    let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+    console.log(solution(arr));
+  </script>
+</body>
+</html>
