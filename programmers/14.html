@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+  1. A: 65, Z: 90
+  2. a: 97: z: 122
+
+  3. s가 공백일 때는 그냥 리턴
+  4. 
+ -->
+<body>
+  <script>
+    function solution(s, n) {
+      let answer = '';
+
+      for(let x of s) {
+        if (x === ' ') {
+          answer += ' ';
+          continue;
+        }
+        if ((x.charCodeAt() <= 122 && x.charCodeAt() + n > 122) || (x.charCodeAt() <= 90 && x.charCodeAt() + n > 90)) {
+          answer += String.fromCharCode((x.charCodeAt() + n) - 26)
+        } else {
+          answer += String.fromCharCode(x.charCodeAt() + n)
+        }
+      }
+
+      return answer;
+    }
+
+    console.log(solution("a Z z", 4));
+  </script>
+</body>
+</html>
