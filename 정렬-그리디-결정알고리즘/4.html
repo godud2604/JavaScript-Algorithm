@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- 
+      출력 설명 : 오름차순으로 정렬된 수열을 출력한다.
+      입력 예제 : 11 7 5 6 10 9
+      출력 예제: 5 6 7 9 10 11
+     -->
+
+    <!-- 
+    1. 0번 index의 값은 그대로 둔다
+    2. i는 index 1부터 1씩 증가하면서 순회한다.
+    3. i가 정해지면 그 안에서 j가 순회한다.
+    4. j는 i-1 부터 0까지 순회한다. (중요)
+        - i 바로 앞까지 탐색한다는 의미.
+    5. 처음에 tmp 에는 arr[i] 를 임시 저장 
+        - tmp = arr[i] 으로 저장해준 후, j가 순회한다.
+        - 꼭 j 가 돌기 전에 !
+
+    6. arr[j] 가 tmp 보다 크면 뒤의 index 로 복사한다.
+        - arr[j + 1] = arr[j]
+        - j가 0까지 돌았으니, J는 -1이 되어 끝이난다.
+
+    6-1. arr[j]가 tmp 보다 작으면 거짓. => else break;
+        - j가 0에서 멈췄으면 1에 tmp를 넣어라
+        => arr[j + 1] = tmp
+    7. j가 끝난 지점 바로 뒤에 tmp를 넣어주어야 한다.
+        - j가 -1로 끝이 났으니 0에 tmp를 넣어주는 것.
+    8. j가 다 돌면 i는 증가한다.
+   -->
+
+   <script>
+      
+      function solution(...arr) {
+        // 0번 index의 값은 그대로 둔다        
+        for (let i = 1; i <= arr.length; i++) {
+          let tmp = arr[i]; // 처음에 tmp 에는 arr[i] 를 임시 저장 
+
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[j] > tmp) {
+              arr[j + 1] = arr[j]
+              arr[j] = tmp // j가 끝난 지점 바로 뒤에 tmp를 넣어주어야 한다.
+            }
+          }
+        }
+        
+        return arr;
+      }
+
+      console.log(solution(11, 7, 5, 6, 10, 9));
+
+      // 2.
+      function solution2(...arr) {
+        // 0번 index의 값은 그대로 둔다        
+        for (let i = 0; i <= arr.length; i++) {
+          let tmp = arr[i], j;
+
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[j] > tmp) arr[j + 1] = arr[j]
+            else break;
+          }
+          arr[j + 1] = tmp;
+        }
+        
+        return arr;
+      }
+
+      console.log(solution2(11, 7, 5, 6, 10, 9));
+   </script>
+</body>
+</html>
