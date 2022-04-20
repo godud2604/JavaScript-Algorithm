@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    입력된 문자열에서 소괄호 ( ) 사이에 존재하는 모든 문자를 제거하고 남은 문자만 출력
+   -->
+  <script>
+    // 1.
+    function solution(s) {
+      let arr = [];
+      let s_arr = s.split('');
+      
+      s_arr.forEach((v, i) => {
+        if (s_arr[i-1] === "(" || s_arr[i+1] === ")") {
+          arr.push(v);
+        }
+      })
+      
+      const answer = s_arr.join('').replace(/\(|\)/g, '').split('');
+
+      return answer.filter(v => !arr.includes(v)).join('');
+    }
+
+    console.log(solution("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+
+
+    // 2. 
+    // while(stack.pop()!=="(" ) 는 스택에서 꺼낸 자료가 알파벳일때는 참이 되어 계속 while문이 돌다가, 스택에서 꺼낸 자료가 "("괄호일 때 거짓이 되어 멈추게 된다.
+    function solution2(s) {
+      let answer;
+      let stack = [];
+
+      for(let x of s) {
+        if (x === ")") {
+          while(stack.pop() !== '(');
+        }
+        else stack.push(x)
+      }
+
+      answer = stack.join('');
+
+      return answer;
+    }
+
+    console.log(solution2("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+  </script>
+</body>
+</html>
