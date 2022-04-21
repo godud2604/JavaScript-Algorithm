@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1. 숫자를 만나면 stack에 push (0)
+    2. 연산자를 만나면 stack의 숫자 중 2개를 pop 한다. (첫 번째 pop: right, 두 번째 pop: left)
+    3. 위의 연산 결과를 stack에 push
+    4. 반복
+   -->
+  <script>
+    function solution(s) {
+      let stack = [];
+      let lt, rt;
+
+      for(let x of s) {
+        if (Number(x)) {
+          stack.push(Number(x));
+        } else {
+          rt = stack.pop();
+          lt = stack.pop();
+
+          if (x === '+') {
+            stack.push(lt + rt)
+          } else if (x === '-') {
+            stack.push(lt - rt)
+          } else if (x === '*') {
+            stack.push(lt * rt)
+          } else if (x === '/') {
+            stack.push(lt / rt)
+          }
+        }
+      }
+
+      return stack.join('');
+    }
+
+    console.log(solution('352+*9-'));
+  </script>
+</body>
+</html>
