@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1. "(" stack에 push
+    2. ")" 일 때는, 레이저의 ")" 인지, 단순히 막대기의 끝인 ")" 인지를 판별하기 위한 과정을 거쳐야 한다.
+
+    3. i가 ")" 일 때, i-1 이 "(" 라면 레이저이다.
+    3-1. 3번에서 레이저라면, 막대기를 쏴야 한다. [ => 스택에 쌓여 있는 마지막을 제외한, "(" 들이 막대기들의 개수 이다. ]
+       -> 레이저라면 스택 마지막의 "("는 pop 해야 한다. (막대기가 아니라서)
+    3-2. answer 에 stack의 size를 누적한다.
+
+    4. i가 ")" 일 때, i-1 이 ")" 라면 막대기이다.
+    4-1. stack에서 pop
+    4-2. answer 에 +1을 더한다.
+   -->
+  <script>
+    function solution(n) {
+      let answer = 0;
+      let stack = [];
+
+      for(let i = 0; i < n.length; i++) {
+        if (n[i] === "(") {
+          stack.push(n[i]);
+        } else {
+          stack.pop();
+          if (n[i-1] === "(") answer += stack.length;
+          else answer++;
+        }
+      }
+      return answer;
+    }
+
+    console.log(solution("(((()(()()))(())()))(()())"));
+  </script>
+</body>
+</html>
