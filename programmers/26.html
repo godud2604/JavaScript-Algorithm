@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1. 10의 모든 자릿수의 합을 구한다.
+    2. 10이 10의 자릿수의 합으로 나누어 떨어지면 true, 아니면 false
+   -->
+  <script>
+    function solution(x) {
+      return x % (String(x).split('')).map(Number).reduce((a, b) => a + b) ? false : true;
+    }
+
+    console.log(solution(13));
+  </script>
+</body>
+</html>
